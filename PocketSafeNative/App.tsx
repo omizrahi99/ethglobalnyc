@@ -2,7 +2,6 @@
 
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import QRCode from 'react-native-qrcode-svg'
 import HomeScreen from './screens/HomeScreen';
 import LoginScreen from './screens/LoginScreen';
 import AddAccount from './screens/AddAccount'
