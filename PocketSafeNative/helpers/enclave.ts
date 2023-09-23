@@ -15,7 +15,7 @@ const EnclaveModule = NativeModules.Enclave
       },
     );
 
-const ALIAS: string = 'com.itu.blockchain.enclave';
+const ALIAS: string = 'factumPay';
 const CURVE = new elliptic.ec('p256');
 
 const formatPublicKey = (publicKeyBase64: string): string => {

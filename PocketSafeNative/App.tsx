@@ -2,6 +2,7 @@
 
 import * as React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import QRCode from 'react-native-qrcode-svg'
 import HomeScreen from './screens/HomeScreen';
 import {useColorScheme} from 'react-native';
 import {
@@ -16,7 +17,7 @@ const Stack = createNativeStackNavigator();
 function App() {
   React.useEffect(() => {
     const getPair = async () => {
-      console.log(await Enclave.generateKeyPair())
+      console.log(await Enclave.getPublicKey())
     }
     getPair()
   }, [])
