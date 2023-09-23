@@ -15,7 +15,11 @@ const EnclaveModule = NativeModules.Enclave
       },
     );
 
+<<<<<<< HEAD
 const ALIAS: string = 'factumPay';
+=======
+const ALIAS: string = 'FactumPay';
+>>>>>>> 5342bfaafb6c71c8d98e0299ea86f06c4401c223
 const CURVE = new elliptic.ec('p256');
 
 const formatPublicKey = (publicKeyBase64: string): string => {

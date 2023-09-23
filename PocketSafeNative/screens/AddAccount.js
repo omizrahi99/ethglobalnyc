@@ -7,14 +7,14 @@ import WorldcoinLogo from '../components/WorldcoinLogo';
 import CardView from '../components/CardView';
 import {useAuth0} from 'react-native-auth0';
 
-function HomeScreen() {
+function AddAccount({ navigation }) {
   const {authorize, clearSession, user, error, isLoading} = useAuth0();
 
-  const onLogin = async () => {
+  const addAccount = async ({ navigation }) => {
     try {
-      await authorize();
+      
     } catch (e) {
-      console.log(e);
+      
     }
   };
 
@@ -30,9 +30,8 @@ function HomeScreen() {
         style={{width: 350, resizeMode: 'contain'}}
         source={require('../assets/logo.png')}
       />
-      <Pressable style={styles.button} onPress={onLogin}>
-        <WorldcoinLogo />
-        <Text style={styles.text}>Sign in with Worldcoin</Text>
+      <Pressable style={styles.button} onPress={addAccount}>
+        <Text style={styles.text}>Add Account</Text>
       </Pressable>
     </View>
   );
@@ -78,4 +77,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default AddAccount;
