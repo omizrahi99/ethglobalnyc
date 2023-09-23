@@ -12,16 +12,10 @@ import {
   DarkTheme,
 } from '@react-navigation/native';
 import {Auth0Provider} from 'react-native-auth0';
-import {Enclave} from './helpers'
 const Stack = createNativeStackNavigator();
 
 function App() {
-  React.useEffect(() => {
-    const getPair = async () => {
-      console.log(await Enclave.getPublicKey())
-    }
-    getPair()
-  }, [])
+  
   const scheme = useColorScheme();
   return (
     <Auth0Provider
@@ -32,8 +26,10 @@ function App() {
           screenOptions={{
             headerShown: false,
           }}>
+          <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="AddAccount" component={AddAccount} />
+
         </Stack.Navigator>
       </NavigationContainer>
     </Auth0Provider>
