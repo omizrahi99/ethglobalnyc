@@ -4,9 +4,9 @@
  *
  * @format
  */
-
-import React from 'react';
-import type {PropsWithChildren} from 'react';
+import { Enclave } from './helpers'
+import React, { useEffect } from 'react';
+import type { PropsWithChildren } from 'react';
 import {
   SafeAreaView,
   ScrollView,
@@ -24,7 +24,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
-import {WebView} from 'react-native-webview';
+import { WebView } from 'react-native-webview';
 
 type SectionProps = PropsWithChildren<{
   title: string;
@@ -64,9 +64,17 @@ function App(): JSX.Element {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
   };
 
+  useEffect(() => {
+
+    const getPair = async () => {
+      console.log(await Enclave.generateKeyPair())
+    }
+    getPair()
+  }, [])
+  
   return (
     <WebView
-      source={{uri: 'http://localhost:5174'}}
+      source={{ uri: 'http://localhost:5174' }}
       injectedJavaScript={`const meta = document.createElement('meta'); meta.setAttribute('content', 'width=device-width, initial-scale=0.5, maximum-scale=0.5, user-scalable=0'); meta.setAttribute('name', 'viewport'); document.getElementsByTagName('head')[0].appendChild(meta); `}
       scalesPageToFit={false}
     />
