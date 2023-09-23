@@ -1,12 +1,23 @@
 import * as React from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, Linking} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {Pressable, StyleSheet} from 'react-native';
 import WorldcoinLogo from '../components/WorldcoinLogo';
 import CardView from '../components/CardView';
+import {useAuth0} from 'react-native-auth0';
 
 function HomeScreen() {
+  const {authorize, clearSession, user, error, isLoading} = useAuth0();
+
+  const onLogin = async () => {
+    try {
+      await authorize();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <View
       style={{
@@ -19,7 +30,7 @@ function HomeScreen() {
         style={{width: 350, resizeMode: 'contain'}}
         source={require('../assets/logo.png')}
       />
-      <Pressable style={styles.button}>
+      <Pressable style={styles.button} onPress={onLogin}>
         <WorldcoinLogo />
         <Text style={styles.text}>Sign in with Worldcoin</Text>
       </Pressable>
